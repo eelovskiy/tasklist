@@ -1,0 +1,16 @@
+{
+    "name": "eelovskiy/tasklist",
+    "description": "Task List Application",
+    "authors": [
+        {
+            "name": "Egor Elovskiy",
+            "email": "egor.elovskiyy@mail.ru"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Framework\\": "Framework/",
+            "App\\": "App/"
+        }
+    }
+}
