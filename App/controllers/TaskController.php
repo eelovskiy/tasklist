@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use Framework\Database;
+use Framework\Session;
 use Exception;
 
 class TaskController
@@ -22,7 +23,13 @@ class TaskController
      */
     public function index()
     {
-        $tasks = $this->db->query('SELECT * FROM tasks')->fetchAll();
+        $user_id = Session::get('user')['id'];
+
+        $params = [
+            'user_id' => $user_id
+        ];
+
+        $tasks = $this->db->query('SELECT * FROM tasks WHERE user_id = :user_id', $params)->fetchAll();
 
         loadView('tasks/index', [
             'tasks' => $tasks
@@ -40,12 +47,14 @@ class TaskController
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $status = isset($_POST['status']) && $_POST['status'] == "on" ? 1 : 0;
+            $user_id = Session::get('user')['id'];
             $this->db->query(
-                "INSERT INTO tasks (name, description, status) VALUES (:name, :description, :status)",
+                "INSERT INTO tasks (name, description, status, user_id) VALUES (:name, :description, :status, :user_id)",
                 [
                     'name' => $_POST['name'],
                     'description' => $_POST['description'],
-                    'status' => $status
+                    'status' => $status,
+                    'user_id' => $user_id
                 ]
             );
             header("Location: /");
@@ -84,8 +93,6 @@ class TaskController
      */
     public function update($params)
     {
-        echo $_SERVER['REQUEST_METHOD'];
-
         $id = $params['id'] ?? '';
 
         $params = [

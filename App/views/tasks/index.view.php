@@ -17,15 +17,13 @@ loadPartial('navbar');
                         <div class="status-indicator <?= $task->status ? 'done' : 'not-done' ?>"></div>
                         <p class="status-description"><?= $task->status ? '' : 'Not ' ?>Completed</p>
                     </div>
-                    <div class="button-group">
-                        <form action="/tasks/<?= $task->id ?>" method="POST" style="display: inline;">
-                            <input type="hidden" name="_method" value="DELETE">
-                            <button type="submit" class="button button-delete">Удалить</button>
-                        </form>
-                        <form action="/tasks/<?= $task->id ?>" method="GET" style="display: inline;">
-                            <button type="submit" class="button button-update">Изменить</button>
-                        </form>
-                    </div>
+                    <form action="/tasks/<?= $task->id ?>" method="POST" style="display: inline;">
+                        <input type="hidden" name="_method" value="DELETE">
+                        <button type="submit" class="delete-button">Удалить</button>
+                    </form>
+                    <form action="/tasks/<?= $task->id ?>" method="GET" style="display: inline;">
+                        <button type="submit" class="update-button">Изменить</button>
+                    </form>
                 </div>
             <?php endforeach; ?>
         </div>

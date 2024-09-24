@@ -30,6 +30,22 @@
     text-decoration: underline;
 }
 
+.nav-link.login {
+    background-color: #28a745; /* Green background for login */
+}
+
+.nav-link.login:hover {
+    background-color: #218838; /* Darker green on hover */
+}
+
+.nav-link.register {
+    background-color: #ffc107; /* Yellow background for register */
+}
+
+.nav-link.register:hover {
+    background-color: #e0a800; /* Darker yellow on hover */
+}
+
 .create-task-btn {
     background-color: #eab308; /* bg-yellow-500 */
     color: black;
@@ -293,14 +309,59 @@
     background-color: #0056b3;
 }
 
-.button-delete {
+.button-group {
+    display: flex;
+    gap: 10px; /* Adjust the gap between buttons as needed */
+    justify-content: center; /* Center the buttons horizontally */
+    margin-top: 10px; /* Add some space above the button group */
+}
+
+.update-button {
+    background-color: #059669;
+    color: white;
+    font-size: 14px;
+    padding: 5px 10px;
+    border: none; /* Ensure no border is applied */
+    border-radius: 0.25rem; /* Add border-radius for consistency */
+    cursor: pointer; /* Add cursor pointer */
+    transition: background-color 0.3s ease; /* Add transition for hover effect */
+}
+
+.update-button:hover {
+    background-color: #10B981;
+}
+
+.delete-button {
     background-color: #dc3545;
-    color:white;
+    color: white;
     font-size: 14px;
     padding: 5px 10px;
     margin-top: 10px;
+    border: none; /* Ensure no border is applied */
+    border-radius: 0.25rem; /* Add border-radius for consistency */
+    cursor: pointer; /* Add cursor pointer */
+    transition: background-color 0.3s ease; /* Add transition for hover effect */
 }
 
-.button-delete:hover {
+.delete-button:hover {
     background-color: #c82333;
 }
+
+.logout-button {
+    background-color: #f44336; /* Red background */
+    color: white; /* White text */
+    border: none; /* No border */
+    padding: 10px 20px; /* Some padding */
+    text-align: center; /* Centered text */
+    text-decoration: none; /* No underline */
+    display: inline-block; /* Inline-block element */
+    font-size: 16px; /* Font size */
+    margin: 4px 2px; /* Some margin */
+    cursor: pointer; /* Pointer cursor on hover */
+    border-radius: 4px; /* Rounded corners */
+}
+
+.logout-button:hover {
+    background-color: #d32f2f; /* Darker red on hover */
+}
+

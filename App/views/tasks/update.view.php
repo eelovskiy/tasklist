@@ -1,7 +1,6 @@
 <?php
 require_once('../helpers.php');
 loadPartial('head');
-inspect($_SERVER['REQUEST_METHOD']);
 ?>
 
 <section class="create-task-section">

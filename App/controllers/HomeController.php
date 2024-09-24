@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use Framework\Database;
+use Framework\Session;
 
 class HomeController
 {
@@ -16,7 +17,13 @@ class HomeController
 
     public function index()
     {
-        $tasks = $this->db->query('SELECT * FROM tasks LIMIT 6')->fetchAll();
+        $user_id = Session::get('user')['id'];
+
+        $params = [
+            'user_id' => $user_id
+        ];
+
+        $tasks = $this->db->query('SELECT * FROM tasks WHERE user_id = :user_id LIMIT 6', $params)->fetchAll();
 
         loadView('home', [
             'tasks' => $tasks

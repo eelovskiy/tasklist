@@ -1,11 +1,16 @@
 <?php
 require __DIR__ . '/../vendor/autoload.php';
-require '../helpers.php';
 
 use Framework\Router;
+use Framework\Session;
+
+Session::start();
+
+require '../helpers.php';
 
 // Instantiate the router
 $router = new Router();
+
 //Get routes
 $routes = require basePath('routes.php');
 
