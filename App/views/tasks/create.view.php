@@ -12,12 +12,14 @@ loadPartial('head');
                 <input
                     type="text"
                     name="name"
+                    required
                     placeholder="Название задачи"
                     class="form-input" />
             </div>
             <div>
                 <textarea
                     name="description"
+                    required
                     placeholder="Описание задачи"
                     class="form-input"></textarea>
             </div>

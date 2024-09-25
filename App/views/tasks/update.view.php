@@ -11,6 +11,7 @@ loadPartial('head');
                 <input
                     type="text"
                     name="name"
+                    required
                     placeholder="Название задачи"
                     value="<?= $task->name ?>"
                     class="form-input" />
@@ -19,6 +20,7 @@ loadPartial('head');
                 <textarea
                     name="description"
                     placeholder="Описание задачи"
+                    required
                     class="form-input"><?= $task->description ?></textarea>
             </div>
             <label>

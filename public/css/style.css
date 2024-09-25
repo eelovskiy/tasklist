@@ -365,3 +365,57 @@
     background-color: #d32f2f; /* Darker red on hover */
 }
 
+.search-form {
+    display: flex;
+    max-width: 300px;
+    margin: 20px auto;
+}
+
+.search-input {
+    flex-grow: 1;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-right: none;
+    border-radius: 4px 0 0 4px;
+}
+
+.search-button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+}
+
+.search-button:hover {
+    background-color: #45a049;
+}
+
+.task-header {
+    margin: 20px 0;
+    padding: 15px;
+    background-color: #f5f5f5;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.task-header h2 {
+    margin: 0;
+    font-size: 24px;
+    color: #333;
+}
+
+.search-result {
+    color: #2c3e50;
+}
+
+.keywords {
+    font-weight: bold;
+    color: #e74c3c;
+}
+
+.all-tasks {
+    color: #3498db;
+}

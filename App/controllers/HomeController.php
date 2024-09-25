@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use Framework\Database;
 use Framework\Session;
+use App\Controllers\AppController;
 
 class HomeController
 {
@@ -23,8 +24,8 @@ class HomeController
             'user_id' => $user_id
         ];
 
-        $tasks = $this->db->query('SELECT * FROM tasks WHERE user_id = :user_id LIMIT 6', $params)->fetchAll();
-
+        $tasks = $this->db->query('SELECT * FROM tasks WHERE user_id = :user_id ORDER BY created_at DESC LIMIT 6', $params)->fetchAll();
+         
         loadView('home', [
             'tasks' => $tasks
         ]);

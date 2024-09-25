@@ -17,13 +17,15 @@ loadPartial('navbar');
                 <input
                     type="text"
                     name="login"
+                    required
                     placeholder="Логин"
                     class="form-input" />
             </div>
             <div>
                 <input
-                    type="text"
+                    type="password"
                     name="password"
+                    required
                     placeholder="Пароль"
                     class="form-input" />
             </div>

@@ -29,7 +29,7 @@ class TaskController
             'user_id' => $user_id
         ];
 
-        $tasks = $this->db->query('SELECT * FROM tasks WHERE user_id = :user_id', $params)->fetchAll();
+        $tasks = $this->db->query('SELECT * FROM tasks WHERE user_id = :user_id ORDER BY created_at DESC', $params)->fetchAll();
 
         loadView('tasks/index', [
             'tasks' => $tasks
@@ -143,10 +143,32 @@ class TaskController
         //Check if task exists
         if (!$task) {
             ErrorController::notFound('task not found');
+            exit;
         }
 
         loadView('tasks/update', [
             'task' => $task
+        ]);
+    }
+
+    /**
+     * Поиск заданий
+     * 
+     * @return void
+     */
+    public function search()
+    {
+        $name = isset($_GET['name']) ? trim($_GET['name']) : '';
+
+        $query = "SELECT * FROM tasks WHERE name LIKE :name OR description LIKE :name";
+        $params = [
+            'name' => "%{$name}%",
+        ];
+
+        $tasks = $this->db->query($query, $params)->fetchAll();
+        loadView('/tasks/index', [
+            'tasks' => $tasks,
+            'keywords' => $name
         ]);
     }
 }

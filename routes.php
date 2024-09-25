@@ -1,9 +1,13 @@
 <?php
 
+use App\Controllers\TaskController;
+
 $router->get('/', 'HomeController@index', ['auth']);
 $router->get('/tasks/create', 'TaskController@create', ['auth']);
 $router->get('/tasks', 'TaskController@index', ['auth']);
-$router->get('/tasks/{id}', 'TaskController@show', ['auth']);
+$router->get('/tasks/edit/{id}', 'TaskController@show', ['auth']);
+$router->get('tasks/search', 'TaskController@search', ['auth']);
+
 $router->delete('/tasks/{id}', 'TaskController@delete', ['auth']);
 $router->put('/tasks/{id}', 'TaskController@update', ['auth']);
 $router->post('/tasks/create', 'TaskController@create', ['auth']);
