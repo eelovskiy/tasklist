@@ -3,7 +3,6 @@
 namespace App\Controllers;
 
 use Framework\Database;
-use Framework\Validation;
 use Framework\Session;
 
 class UserController
@@ -91,6 +90,8 @@ class UserController
         Session::clearAll();
 
         $params = session_get_cookie_params();
+
+        //Поставить куки время на сутки назад, чтобы ее уничтожить
         setcookie('PHPSESSID', '', time() - 86400, $params['path'], $params['domain']);
 
         header("Location: /");
@@ -111,8 +112,8 @@ class UserController
             'login' => $login
         ];
 
-        $user = $this->db->query('SELECT * FROM users WHERE
-        login = :login', $params)->fetch();
+        $user = $this->db->query('SELECT * FROM users WHERE login = :login',
+        $params)->fetch();
 
         if (!$user) {
             $errors['user'] = 'Пользователя с данным именем не существует';

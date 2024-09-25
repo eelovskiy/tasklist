@@ -4,7 +4,6 @@ namespace App\Controllers;
 
 use Framework\Database;
 use Framework\Session;
-use App\Controllers\AppController;
 
 class HomeController
 {

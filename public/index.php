@@ -8,10 +8,10 @@ Session::start();
 
 require '../helpers.php';
 
-// Instantiate the router
+// Создать экземпляр роутера
 $router = new Router();
 
-//Get routes
+// Получить пути
 $routes = require basePath('routes.php');
 
 // Get current URI and HTTP method

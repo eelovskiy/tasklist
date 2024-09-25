@@ -10,7 +10,7 @@ class Router
     protected $routes = [];
 
     /**
-     * Add a new route
+     * Add new route
      * 
      *
      * @param string $method
@@ -33,7 +33,7 @@ class Router
     }
 
     /**
-     * Add a GET route
+     * Add GET route
      * 
      * @param string $uri
      * @param string $controller
@@ -46,7 +46,7 @@ class Router
     }
 
     /**
-     * Add a POST route
+     * Add POST route
      * 
      * @param string $uri
      * @param string $controller
@@ -59,7 +59,7 @@ class Router
     }
 
     /**
-     * Add a PUT route
+     * Add PUT route
      * 
      * @param string $uri
      * @param string $controller
@@ -72,7 +72,7 @@ class Router
     }
 
     /**
-     * Add a DELETE route
+     * Add DELETE route
      * 
      * @param string $uri
      * @param string $controller
@@ -105,6 +105,7 @@ class Router
         }
 
         foreach ($this->routes as $route) {
+
             //Split the current URI into segments
             $uriSegments = explode('/', trim($uri, '/'));
 
@@ -135,8 +136,10 @@ class Router
                         $params[$matches[1]] = $uriSegments[$i];
                     }
                 }
+
                 if ($match) {
-                    foreach($route['middleware'] as $middleware){
+                    //Перенаправить в зависимости от прав доступа
+                    foreach ($route['middleware'] as $middleware) {
                         (new Authorize())->handle($middleware);
                     }
 

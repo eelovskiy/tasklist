@@ -46,16 +46,19 @@ class TaskController
         loadView('tasks/create');
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
             $status = isset($_POST['status']) && $_POST['status'] == "on" ? 1 : 0;
             $user_id = Session::get('user')['id'];
+
+            $params = [
+                'name' => $_POST['name'],
+                'description' => $_POST['description'],
+                'status' => $status,
+                'user_id' => $user_id
+            ];
             $this->db->query(
                 "INSERT INTO tasks (name, description, status, user_id) VALUES (:name, :description, :status, :user_id)",
-                [
-                    'name' => $_POST['name'],
-                    'description' => $_POST['description'],
-                    'status' => $status,
-                    'user_id' => $user_id
-                ]
+                $params
             );
             header("Location: /");
         }
@@ -70,6 +73,7 @@ class TaskController
     public function delete($params)
     {
         $id = $params['id'] ?? '';
+
         if (!$id) {
             header('Location: /tasks');
             exit;
@@ -112,14 +116,17 @@ class TaskController
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $status = isset($_POST['status']) && $_POST['status'] == "on" ? 1 : 0;
+
+            $params = [
+                'name' => $_POST['name'],
+                'description' => $_POST['description'],
+                'status' => $status,
+                'id' => $params['id']
+            ];
+
             $this->db->query(
                 "UPDATE tasks SET name=:name, description=:description, status=:status WHERE id=:id",
-                [
-                    'name' => $_POST['name'],
-                    'description' => $_POST['description'],
-                    'status' => $status,
-                    'id' => $params['id']
-                ]
+                $params
             );
             header("Location: /");
         }

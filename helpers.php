@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Get the base path
+ * Получить базовый путь
  * 
  * @param string path
  * @return string
@@ -12,7 +12,7 @@ function basePath($path = '')
 }
 
 /**
- * Load a view
+ * Загрузить view
  * 
  * @param string $name
  * @return void
@@ -20,7 +20,6 @@ function basePath($path = '')
  */
 function loadView($name, $data = [])
 {
-
     $viewPath = basePath("App/views/{$name}.view.php");
 
     if (file_exists($viewPath)) {
@@ -32,7 +31,7 @@ function loadView($name, $data = [])
 }
 
 /**
- * Load a partial
+ * Загрузить часть страницы
  * 
  * @param string $name
  * @return void
@@ -50,7 +49,7 @@ function loadPartial($name)
 }
 
 /**
- * Inspect a value
+ * Осмотреть значение
  * 
  * @param mixed $value
  * @return void
@@ -63,7 +62,7 @@ function inspect($value)
 }
 
 /**
- * Inspect a value and die
+ * Осмотреть значение и умереть
  * 
  * @param mixed $value
  * @return void

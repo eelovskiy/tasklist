@@ -1,7 +1,5 @@
 <?php
 
-use App\Controllers\TaskController;
-
 $router->get('/', 'HomeController@index', ['auth']);
 $router->get('/tasks/create', 'TaskController@create', ['auth']);
 $router->get('/tasks', 'TaskController@index', ['auth']);
